@@ -1,3 +1,18 @@
+/*重置默认样式*/
+
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration:none;
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+    list-style:none;
+}
+
 .body_bg{
     background-color: #222D32;
 }
@@ -14,3 +29,42 @@
     margin-top: 150px;
 }
 
+/*公共部分*/
+
+/* 侧边栏 */
+.lt-aside{
+    height: 100%;
+    width: 180px;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color: #222D32;
+}
+.lt-aside .title{
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    background-color: #367FA9;
+    text-align: center;
+}
+.lt-aside .title a{
+    color: #fff;
+    display: block;
+}
+.lt-aside .user{
+    padding-top: 30px;
+}
+.lt-aside .user img{
+    display: block;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin:0 auto;
+}
+.lt-aside .user p{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    color:#fff;
+    text-align: center;
+}
