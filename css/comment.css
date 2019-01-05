@@ -12,6 +12,9 @@ ul{
     margin: 0;
     list-style:none;
 }
+.red{
+    color:red;
+}
 
 .body_bg{
     background-color: #222D32;
@@ -39,6 +42,11 @@ ul{
     top:0;
     left:0;
     background-color: #222D32;
+    transition: all 1s;
+    z-index: 999;
+}
+.lt-aside.hidemenu{
+    left:-180px;
 }
 .lt-aside .title{
     height: 50px;
@@ -53,6 +61,7 @@ ul{
 }
 .lt-aside .user{
     padding-top: 30px;
+    height: 180px;
 }
 .lt-aside .user img{
     display: block;
@@ -66,5 +75,71 @@ ul{
     line-height: 40px;
     font-size: 18px;
     color:#fff;
+    text-align: center;
+}
+
+.lt-aside .nav li a{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding-left: 40px;
+    color:#fff;
+    border-left: 3px solid transparent;
+    line-height: 40px;
+}
+.lt-aside .nav li a i{
+    margin-right:4px ;
+}
+.lt-aside .nav .child{
+    display: none;
+}
+
+.lt-aside .nav .child a{
+    margin-left: 20px;
+    /* display:none; */
+}
+
+/*右边主体部分*/
+
+.lt-main{
+    padding-left: 180px;
+    padding-top: 60px;
+    width: 100%;
+    /* height: 2000px;  */
+    background-color: skyblue;
+    transition: all 1s;
+}
+.lt-main.hidemenu{
+    padding-left: 0;
+}
+/* .lt-main .bread{
+    margin-top: 60px;
+} */
+/*头部区域*/
+
+.lt-top{
+    width: 100%;
+    height: 50px;
+    /* padding-left: 180px; */
+    background-color: #3C8DBC;
+    transition:all 1s;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    padding-left: 180px;
+
+}
+.lt-top.hidemenu{
+   padding-left: 0;
+}
+
+.lt-top .icon-left,
+.lt-top .icon-right{
+    display: block;
+    height: 100%;
+    width: 50px;
+    line-height: 50px;
+    color:#fff;
+    font-size: 20px;
     text-align: center;
 }
