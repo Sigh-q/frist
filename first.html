@@ -30,7 +30,7 @@
         <div class="nav">
             <ul>
                 <li><a href="user.html"><i class="glyphicon glyphicon-user"></i>
-                    <span>用户管理</span></a></li>
+                        <span>用户管理</span></a></li>
                 <li>
                     <a href="javascript:;" class="category">
                         <i class="glyphicon glyphicon-list"></i>
@@ -42,7 +42,7 @@
                     </div>
                 </li>
                 <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i>
-                    <span>商品管理</span></a></li>
+                        <span>商品管理</span></a></li>
             </ul>
         </div>
     </div>
@@ -58,47 +58,100 @@
             </a>
         </div>
 
+
+        <!-- 面包屑导航 -->
         <div class="container-fluid bread">
             <ol class="breadcrumb">
                 <li><a href="#">管理系统</a></li>
-                <li class="active">首页</li>
+                <li class="active">分类管理</li>
+                <li class="active">一级分类</li>
             </ol>
+
+
+         <button class="btn btn-default addBtn1">添加分类</button>
+
+                    <!-- 主体部分 -->
+         <table class="table table-bordered table-hover mt-20">
+            <thead>
+                <tr>
+                    <th width="20%">序号</th>
+                    <th width="80%">一级分类名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 动态渲染表格区域 -->
+            </tbody>
+        </table>
+        <div class="pull-right">
+            <ul id="paginator"></ul>
+        </div>
         </div>
 
-        <div id="main" style="width: 600px;height:400px;"></div>
 
+
+
+    </div>
+    <!-- 添加分类模态框 -->
+    <div class="modal fade bs-example-modal-sm" id="addModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <form id="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body red">
+                        <div class="form-group">
+                                <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类名称">
+                              </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary" id="addBtn2">添加</button>
+                </div>
+            </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 
 
     <!-- 模态框 -->
 
     <div class="modal fade bs-example-modal-sm" id="logoutModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-sm" role="document">
-              <div class="modal-content">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">温馨提示</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
                 </div>
                 <div class="modal-body red">
-                  <p><i class="glyphicon glyphicon-info-sign"></i>你确定要退出么?</p>
+                    <p><i class="glyphicon glyphicon-info-sign"></i>你确定要退出么?</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                  <button type="button" class="btn btn-primary" id="sure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="sure">确定</button>
                 </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 
-
+    <script type="text/html" id="firsttmp">
+    {{ each rows v i}}
+        <tr>
+            <td>{{i+1 + (page-1)*size}}</td>
+            <td>{{v.categoryName}}</td>
+        </tr>
+    {{/each}}
+    </script>
     <script src="./lib/jquery/jquery.min.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
-    <script src="./js/isLogin.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/isLogin.js"></script>
+    <script src="./js/first.js"></script>
 
 
 </body>
