@@ -38,7 +38,13 @@ $(function(){
 
      /**
       * 退出功能
+      * 
       */
+     $(".logout-btn").click(function(){
+         $("#logoutModal").modal("show");
+     });
+
+
     $("#sure").click(function(){
         $.ajax({
             type:"get",

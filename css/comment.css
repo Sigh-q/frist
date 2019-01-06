@@ -87,6 +87,12 @@ ul{
     border-left: 3px solid transparent;
     line-height: 40px;
 }
+.lt-aside .nav li a.current{
+    border-left: 3px solid blue;
+    background-color: #1D1F21;
+    
+
+}
 .lt-aside .nav li a i{
     margin-right:4px ;
 }
@@ -95,7 +101,7 @@ ul{
 }
 
 .lt-aside .nav .child a{
-    margin-left: 20px;
+    padding-left: 60px;
     /* display:none; */
 }
 
@@ -106,7 +112,7 @@ ul{
     padding-top: 60px;
     width: 100%;
     /* height: 2000px;  */
-    background-color: skyblue;
+    /* background-color: skyblue; */
     transition: all 1s;
 }
 .lt-main.hidemenu{
@@ -142,4 +148,18 @@ ul{
     color:#fff;
     font-size: 20px;
     text-align: center;
+}
+
+.container .echarts-left,
+.container .echarts-right{
+    width: 48%;
+    height: 400px;
+    /* background-color: pink; */
+}
+
+/*用户页面*/
+.table.table-bordered th,
+.table.table-bordered td{
+    text-align: center;
+    vertical-align: middle;
 }
