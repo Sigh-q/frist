@@ -30,7 +30,7 @@
         <div class="nav">
             <ul>
                 <li><a href="user.html"><i class="glyphicon glyphicon-user"></i>
-                    <span>用户管理</span></a></li>
+                        <span>用户管理</span></a></li>
                 <li>
                     <a href="javascript:;" class="category">
                         <i class="glyphicon glyphicon-list"></i>
@@ -42,7 +42,7 @@
                     </div>
                 </li>
                 <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i>
-                    <span>商品管理</span></a></li>
+                        <span>商品管理</span></a></li>
             </ul>
         </div>
     </div>
@@ -61,44 +61,142 @@
         <div class="container-fluid bread">
             <ol class="breadcrumb">
                 <li><a href="#">管理系统</a></li>
-                <li class="active">首页</li>
+                <li class="active">分类管理</li>
+                <li class="active">二级分类</li>
             </ol>
+
+            <!-- 添加二级分类按钮 -->
+
+            <button class="btn btn-default addBtn">添加分类</button>
+
+            <table class="table table-bordered table-hover mt-20">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>一级分类名称</th>
+                        <th>二级分类名称</th>
+                        <th>二级分类LOGO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 动态渲染区域 -->
+                </tbody>
+            </table>
+
+
+            <!-- 分页 -->
+
+            <div class="pull-right">
+                <ul id="paginator"></ul>
+            </div>
         </div>
 
-        <div id="main" style="width: 600px;height:400px;"></div>
 
+
+    </div>
+
+
+    <!-- 添加二级分类模态框 -->
+    <div class="modal fade bs-example-modal-sm" id="addModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <form id="form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">添加分类</h4>
+                    </div>
+                    <div class="modal-body red">
+
+                        <!-- 下拉菜单 -->
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle fristPrimary" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span id="text">请选择一级分类</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!-- 渲染一级分类数据 -->
+                            </ul>
+                        </div>
+                        <!-- 输入二级分类名称 -->
+                        <div class="form-group mt-20">
+                                <input type="text" name="categoryName" class="form-control" placeholder="请输入二级分类名称">
+                        </div>
+
+                        <!-- 上传图片 -->
+                        <div class="form-group mt-20">
+                               
+                                <label for="fileupload" class="btn btn-default" >上传图片</label>
+                                <input type="file" name="pic1"  data-url="/category/addSecondCategoryPic" id="fileupload" style="display: none">
+                        </div>
+                        <!-- 图片预览 -->
+                        <div class="form-group" id="imgBox">
+                                <img style="width: 100px;" src="./images/02.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="addBtn">确定</button>
+                    </div>
+
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 
 
     <!-- 模态框 -->
 
     <div class="modal fade bs-example-modal-sm" id="logoutModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-sm" role="document">
-              <div class="modal-content">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">温馨提示</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">温馨提示</h4>
                 </div>
                 <div class="modal-body red">
-                  <p><i class="glyphicon glyphicon-info-sign"></i>你确定要退出么?</p>
+                    <p><i class="glyphicon glyphicon-info-sign"></i>你确定要退出么?</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                  <button type="button" class="btn btn-primary" id="sure">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="sure">确定</button>
                 </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 
+    <!-- 动态渲染    -->
+    <script type="text/html" id="secondtmp">
+        {{each rows v i}}
+        <tr>
+            <td>{{i + 1 +(page-1)*size}}</td>
+            <td>{{v.categoryName}}</td>
+            <td>{{v.brandName}}</td>
+            <td><img height = "50px" src="{{v.brandLogo}}" alt=""></td>
+        </tr>
+    
+    {{/each}}
+    
+    </script>
+    <!-- 动态渲染一级分类数据 -->
+    <script type="text/html" id="firsttmp">
+        {{each rows v i}}
+        <li><a href="#">{{v.categoryName}}</a></li>
 
+        {{/each}}
+    
+    </script>
     <script src="./lib/jquery/jquery.min.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
-    <script src="./js/isLogin.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/isLogin.js"></script>
+    <script src="./js/second.js"></script>
 
 
 </body>
